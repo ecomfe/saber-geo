@@ -1,0 +1,20 @@
+{
+  "name": "saber-geo",
+    "version": "0.0.1",
+    "description": "适合移动端的 Geo Location 封装",
+    "maintainers": [
+        { "name": "zfkun", "email": "zfkun@msn.com" }
+    ],
+    "contributors": [
+        { "name": "guananddu", "email": "guananddu@gmail.com" }
+    ],
+    "scripts": {
+        "test": "./node_modules/.bin/phantomjs test/run-jasmine.js test/runner.html"
+    },
+    "devDependencies": {
+        "phantomjs": "~1.9"
+    },
+    "license": "MIT",
+    "repository": "git://github.com/ecomfe/saber-geo.git",
+    "bugs": "https://github.com/ecomfe/saber-geo/issues"
+}
