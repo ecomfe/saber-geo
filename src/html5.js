@@ -1,12 +1,12 @@
 /**
- * @file geo
+ * @file HTML5标准支持
  * @author zfkun[zfkun@msn.com]
  */
 
 define(function( require ) {
-    
-    var html5 = require( 'html5' );
 
-    return html5;
+    var exports = {};
+
+    return exports;
 
 });

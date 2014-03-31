@@ -35,7 +35,7 @@ define(function( require ) {
      * @public
      * @type {string}
      */
-    exports.provider = 'http://hendless.duapp.com';
+    exports.provider = 'http://hendless.duapp.com/addr';
 
     /**
      * search ip info
