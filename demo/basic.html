@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>Geolocation Detect</title>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
+    <script>
+    require.config({
+        packages: [
+            {
+                name: 'saber-geo',
+                location: '../src'
+            }
+        ]
+    });
+    </script>
+</head>
+<body>
+    <div id="position">
+        <p class="timestamp"></p>
+        <p class="latitude"></p>
+        <p class="longitude"></p>
+        <p class="accuracy"></p>
+        <p class="altitudeAccuracy"></p>
+        <p class="heading"></p>
+        <p class="speed"></p>
+        <p class="error"></p>
+    </div>
+    <script>
+        function html ( selector, text ) {
+            document.querySelector( selector ).innerHTML = text;
+        }
+
+        function showPosition ( position ) {
+            var coords = position.coords;
+            html( '.timestamp', '更新时间: ' + position.timestamp );
+            html( '.latitude', '经度: ' + coords.latitude );
+            html( '.longitude', '纬度: ' + coords.longitude );
+            html( '.accuracy', '精确度: ' + coords.accuracy );
+            html( '.altitudeAccuracy', '高度精确度: ' + coords.altitudeAccuracy );
+            html( '.heading', '移动方向: ' + coords.heading );
+            html( '.speed', '移动速度(m/s): ' + coords.speed );
+        }
+
+        function showError ( error ) {
+            var el = document.querySelector( '#position' );
+            el.querySelector( '.error' ).innerHTML = '错误: ' + JSON.stringify( error );  
+        }
+
+        require( [ 'saber-geo' ], function( geo ) {
+            geo.get( showPosition, showError );
+        });
+    </script>
+</body>
+</html>
