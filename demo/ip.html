@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>IP Detect</title>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
+    <script>
+    require.config({
+        packages: [
+            {
+                name: 'saber-geo',
+                location: '../src'
+            }
+        ]
+    });
+    </script>
+</head>
+<body>
+    <div id="ip">
+        <p class="ip"></p>
+        <p class="address"></p>
+    </div>
+    <script>
+        function html ( selector, text ) {
+            document.querySelector( selector ).innerHTML = text;
+        }
+
+        function showIP ( data ) {
+            html( '.ip', 'IP: ' + data.ip );
+            html( '.address', '位置: ' + data.address );
+        }
+
+        require( [ 'saber-geo/ip' ], function( ip ) {
+            ip.find( showIP );
+        });
+    </script>
+</body>
+</html>

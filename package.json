@@ -1,13 +1,11 @@
 {
   "name": "saber-geo",
-    "version": "0.0.1",
-    "description": "适合移动端的 Geo Location 封装",
+    "version": "0.1.0",
+    "description": "适合移动端的 Geolocation 封装",
     "maintainers": [
         { "name": "zfkun", "email": "zfkun@msn.com" }
     ],
-    "contributors": [
-        { "name": "guananddu", "email": "guananddu@gmail.com" }
-    ],
+    "contributors": [],
     "scripts": {
         "test": "./node_modules/.bin/phantomjs test/run-jasmine.js test/runner.html"
     },

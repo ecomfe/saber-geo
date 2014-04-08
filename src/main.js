@@ -4,9 +4,9 @@
  */
 
 define(function( require ) {
+    
+    var html5 = require( './html5' );
 
-    var exports = {};
-
-    return exports;
+    return html5;
 
 });
