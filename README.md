@@ -40,7 +40,7 @@ require( [ 'saber-geo' ], function( Geo ) {
 
 ### Base
 
-`Base` 部分是标准的 [HTML5 Geolocation API](http://www.w3.org/TR/geolocation-API) 封装，在 `require('saber-geo')` 时加载。
+`Base` 部分是标准的 [HTML5 Geolocation API](http://www.w3.org/TR/geolocation-API) 封装，在 `require( 'saber-geo' )` 时加载。
 
 #### .get( onSuccess[, onError, options] )
 
@@ -116,8 +116,10 @@ Geo.clear( watchId );
 查询当前`IP信息`
 
 ```javascript
-ip.find( function () {
-    console.info( 'IP Info: ', arguments );
+require( [ 'saber-geo/ip' ], function( IP ) {
+	IP.find( function () {
+    	console.info( 'IP Info: ', arguments );
+	});
 });
 ```
 
