@@ -18,7 +18,7 @@ define(function( require ) {
      * @param {Object=} options 配置项
      * @param {boolean=} options.highAcuracy 是否使用高精度
      * @param {number=} options.timeout 超时时长,单位毫秒
-     * @param {number=} options.interval 最大检测间隔,单位毫秒
+     * @param {number=} options.age 数据缓存时间,单位毫秒,为`0`时每次都执行新的检索
      */
     exports.get = function ( onSuccess, onError, options ) {
         if ( geo ) {
@@ -34,7 +34,7 @@ define(function( require ) {
      * @param {Object=} options 配置项
      * @param {boolean=} options.highAcuracy 是否使用高精度
      * @param {number=} options.timeout 超时时长,单位毫秒
-     * @param {number=} options.interval 最大检测间隔,单位毫秒
+     * @param {number=} options.age 数据缓存时间,单位毫秒,为`0`时每次都执行新的检索
      * @return {number=} 支持`geolocation`环境返回`watchId`，否则返回`undefined`
      */
     exports.watch = function ( onSuccess, onError, options ) {
@@ -64,7 +64,7 @@ define(function( require ) {
      * @param {Object=} options 用户配置
      * @param {boolean=} options.highAcuracy 是否使用高精度
      * @param {number=} options.timeout 超时时长,单位毫秒
-     * @param {number=} options.interval 最大检测间隔,单位毫秒
+     * @param {number=} options.age 数据缓存时间,单位毫秒,为`0`时每次都执行新的检索
      * @return {Object} 符合`W3C PositionOptions`规格的对象
      */
     function getPositionOptions ( options ) {
@@ -83,8 +83,8 @@ define(function( require ) {
         }
 
         // 最大检测间隔
-        if ( options.interval >= 0 ) {
-            opt.maximumAge = options.interval;
+        if ( options.age >= 0 ) {
+            opt.maximumAge = options.age;
         }
 
         return opt;
