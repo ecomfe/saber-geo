@@ -24,7 +24,7 @@ define(function( require ) {
     /**
      * callback name for jsonp
      *
-     * @public
+     * @private
      * @type {string}
      */
     var callback = 'callback';
@@ -32,7 +32,7 @@ define(function( require ) {
     /**
      * provider url for ip-server
      *
-     * @public
+     * @private
      * @type {string}
      */
     var provider = 'http://hendless.duapp.com/addr';
@@ -43,7 +43,7 @@ define(function( require ) {
      * @options {string} options.callback
      * @options {string} options.provider
      */
-    exports.setup = function ( options ) {
+    exports.setConfig = function ( options ) {
         options = options || {};
         var cb = options.callback,
             pd = options.provider;
@@ -55,6 +55,20 @@ define(function( require ) {
         if ( pd ) {
             provider = pd
         }
+    };
+
+    /**
+     * get config options
+     *
+     * @returns {Object} options
+     * @options {string} callback
+     * @options {string} provider
+     */
+    exports.getConfig = function () {
+        return {
+            callback: callback,
+            provider: provider
+        };
     };
 
     /**

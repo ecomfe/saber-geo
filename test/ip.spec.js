@@ -13,33 +13,41 @@ define(function() {
         });
 
         it( 'should defined `callback`.', function() {
-            expect( typeof ip.callback ).toEqual( 'string' );
-            expect( ip.callback ).toEqual( 'callback' );
+            expect( typeof ip.getConfig().callback ).toEqual( 'string' );
+            expect( ip.getConfig().callback ).toEqual( 'callback' );
         });
 
         it( 'should writeable `callback`.', function() {
-            var _callback = ip.callback;
+            var _callback = ip.getConfig().callback;
             var cb = 'mycb';
 
-            ip.callback = cb;
-            expect( ip.callback ).toEqual( cb );
+            ip.setConfig({
+                callback: cb
+            });
+            expect( ip.getConfig().callback ).toEqual( cb );
 
-            ip.callback = _callback;
+            ip.setConfig({
+                callback: _callback
+            });
         });
 
         it( 'should defined `provider`.', function() {
-            expect( typeof ip.provider ).toEqual( 'string' );
-            expect( ip.provider ).toEqual( 'http://hendless.duapp.com/addr' );
+            expect( typeof ip.getConfig().provider ).toEqual( 'string' );
+            expect( ip.getConfig().provider ).toEqual( 'http://hendless.duapp.com/addr' );
         });
 
         it( 'should writeable `provider`.', function() {
-            var _provider = ip.provider;
+            var _provider = ip.getConfig().provider;
             var pr = 'http://ecomfe.baidu.io/saber';
 
-            ip.provider = pr;
-            expect( ip.provider ).toEqual( pr );
+            ip.setConfig({
+                provider: pr
+            });
+            expect( ip.getConfig().provider ).toEqual( pr );
 
-            ip.provider = _provider;
+            ip.setConfig({
+                provider: _provider
+            });
         });
 
         it( 'should defined `find`.', function() {
