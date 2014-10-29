@@ -14,7 +14,7 @@ define(function( require ) {
     var PREFIX_CALLBACK = '_SJC_';
 
     /**
-     * 
+     *
      * @const
      * @type {string}
      */
@@ -23,35 +23,55 @@ define(function( require ) {
 
     /**
      * callback name for jsonp
-     * 
+     *
      * @public
      * @type {string}
      */
-    exports.callback = 'callback';
+    var callback = 'callback';
 
     /**
      * provider url for ip-server
-     * 
+     *
      * @public
      * @type {string}
      */
-    exports.provider = 'http://hendless.duapp.com/addr';
+    var provider = 'http://hendless.duapp.com/addr';
+
+    /**
+     * setup callback name and provider url
+     * @param {Object} options
+     * @options {string} options.callback
+     * @options {string} options.provider
+     */
+    exports.setup = function ( options ) {
+        options = options || {};
+        var cb = options.callback,
+            pd = options.provider;
+
+        if ( cb ) {
+            callback = cb;
+        }
+
+        if ( pd ) {
+            provider = pd
+        }
+    };
 
     /**
      * search ip info
-     * 
+     *
      * @public
      * @param {Function} fn success handler
      */
     exports.find = function ( fn ) {
         if ( fn && typeof fn === 'function') {
-            jsonp( exports.provider, fn );
+            jsonp( provider, fn );
         }
     };
 
     /**
      * jsonp request maker
-     * 
+     *
      * @inner
      * @param {string} url request url
      * @param {Function} fn success handler
@@ -60,7 +80,7 @@ define(function( require ) {
         var now = Date.now().toString( 16 );
         var id = PREFIX_ID + now;
         var key = PREFIX_CALLBACK + now;
-        
+
         window[ key ] = function () {
             clean( id, key );
             fn.apply( fn, arguments );
@@ -73,14 +93,14 @@ define(function( require ) {
         script.charset = 'utf-8';
         script.src = url
             + ( url.indexOf( '?' ) < 0 ? '?' : '&' )
-            + exports.callback + '=' + key;
+            + callback + '=' + key;
 
         document.getElementsByTagName( 'head' )[ 0 ].appendChild( script );
     }
 
     /**
      * cleanup JSONP request
-     * 
+     *
      * @inner
      * @param {string} id script id for JSONP
      * @param {string} key key of callback handler for JSONP
